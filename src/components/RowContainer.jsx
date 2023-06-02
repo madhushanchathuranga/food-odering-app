@@ -4,11 +4,12 @@ import { motion } from "framer-motion";
 import NotFound from "../img/NotFound.svg";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
+const it = localStorage.getItem("cartItems")
 
 const RowContainer = ({ flag, data, scrollValue }) => {
   const rowContainer = useRef();
 
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(JSON.parse(it));
 
   const [{ cartItems }, dispatch] = useStateValue();
 
@@ -27,6 +28,17 @@ const RowContainer = ({ flag, data, scrollValue }) => {
   useEffect(() => {
     addtocart();
   }, [items]);
+
+  let setting = (i) => {
+    let ids = []
+    items.forEach(element => {
+      ids.push(element.id);
+    });
+    if (ids.includes(i.id))
+      alert("Item already added to the card")
+    else 
+      setItems([...cartItems, i])
+  }
 
   return (
     <div
@@ -57,7 +69,7 @@ const RowContainer = ({ flag, data, scrollValue }) => {
               <motion.div
                 whileTap={{ scale: 0.75 }}
                 className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center cursor-pointer hover:shadow-md -mt-8"
-                onClick={() => setItems([...cartItems, item])}
+                onClick={() => setting(item)}
               >
                 <MdShoppingBasket className="text-white" />
               </motion.div>
