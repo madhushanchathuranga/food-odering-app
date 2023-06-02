@@ -7,6 +7,8 @@ import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
 import EmptyCart from "../img/emptyCart.svg";
 import CartItem from "./CartItem";
+import { db } from "../firebase.config";
+import { doc, setDoc } from "firebase/firestore";
 
 const CartContainer = () => {
   const [{ cartShow, cartItems, user }, dispatch] = useStateValue();
@@ -35,6 +37,28 @@ const CartContainer = () => {
 
     localStorage.setItem("cartItems", JSON.stringify([]));
   };
+
+  let checkout = () => {
+    let user = JSON.parse(localStorage.getItem('user'))
+    let all = JSON.parse(localStorage.getItem('cartItems'))
+    let order = []
+    let tot = 40
+
+    all.forEach((element, id) => {
+      order.push({
+        'name': element.title,
+        'qty': element.qty
+      });
+      tot += element.qty * element.price
+    });
+
+    setDoc(doc(db, "Order", user.uid), {
+      "name": user.displayName,
+      "email": user.email,
+      "order": order,
+      'totel': tot
+    })
+  }
 
   return (
     <motion.div
@@ -99,6 +123,7 @@ const CartContainer = () => {
             {user ? (
               <motion.button
                 whileTap={{ scale: 0.8 }}
+                onClick={() => checkout()}
                 type="button"
                 className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg"
               >

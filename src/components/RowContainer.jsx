@@ -4,12 +4,20 @@ import { motion } from "framer-motion";
 import NotFound from "../img/NotFound.svg";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
-const it = localStorage.getItem("cartItems")
 
 const RowContainer = ({ flag, data, scrollValue }) => {
+  let it = localStorage.getItem("cartItems")
   const rowContainer = useRef();
 
   const [items, setItems] = useState(JSON.parse(it));
+
+  try {
+    items.forEach(element => {
+      //console.log();
+    });
+  } catch (error) {
+    setItems([])
+  }
 
   const [{ cartItems }, dispatch] = useStateValue();
 
