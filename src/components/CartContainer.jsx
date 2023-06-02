@@ -58,6 +58,7 @@ const CartContainer = () => {
       "order": order,
       'totel': tot
     })
+    alert("Your Order is completed.")
   }
 
   return (
