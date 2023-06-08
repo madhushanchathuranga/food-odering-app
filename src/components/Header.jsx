@@ -201,27 +201,30 @@ const Header = () => {
               <ul className="flex flex-col ">
                 <li
                   className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2"
-                  onClick={() => setIsMenu(false)}
+                  onClick={() =>{
+                    setIsMenu(false)
+                    home()
+                  } }
                 >
                   Home
                 </li>
                 <li
                   className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2"
-                  onClick={() => setIsMenu(false)}
+                  onClick={() =>{
+                    setIsMenu(false)
+                    menu()
+                  } }
                 >
                   Menu
                 </li>
                 <li
                   className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2"
-                  onClick={() => setIsMenu(false)}
+                  onClick={() =>{
+                    setIsMenu(false)
+                    order()
+                  } }
                 >
-                  About Us
-                </li>
-                <li
-                  className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2"
-                  onClick={() => setIsMenu(false)}
-                >
-                  Service
+                  Orders
                 </li>
               </ul>
 
