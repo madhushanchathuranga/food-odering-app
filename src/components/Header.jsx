@@ -10,10 +10,12 @@ import Avatar from "../img/avatar.png";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const firebaseAuth = getAuth(app);
   const provider = new GoogleAuthProvider();
+  const gto = useNavigate()
 
   const [{ user, cartShow, cartItems }, dispatch] = useStateValue();
 
@@ -51,6 +53,25 @@ const Header = () => {
     });
   };
 
+  let order = () => {
+    try {
+      if (user.email === "avgmadhushanchathuranga99@gmail.com")
+        gto('/orders')
+      else
+        alert('Access denied. Only administrators have permission to perform this action.')
+    } catch (error) {
+      alert('Access Denied.')
+    }
+  }
+
+  let home = () => {
+    gto('/')
+  }
+
+  let menu = () => {
+    gto('/menu')
+  }
+
   return (
     <header className="fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16 bg-primary">
       {/* desktop & tablet */}
@@ -67,17 +88,17 @@ const Header = () => {
             exit={{ opacity: 0, x: 200 }}
             className="flex items-center gap-24 "
           >
-            <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+            <li onClick={() => home()} className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
               Home
             </li>
-            <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+            <li onClick={() => menu()} className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
               Menu
             </li>
-            <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+            {/* <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
               About Us
-            </li>
-            <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-              Service
+            </li> */}
+            <li onClick={() => order()} className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+              Orders
             </li>
           </motion.ul>
 
@@ -169,7 +190,6 @@ const Header = () => {
               exit={{ opacity: 0, scale: 0.6 }}
               className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-12 right-0"
             >
-              //vetrivel.galaxy@gmail.com
               {user && user.email === "avgmadhushanchathuranga99@gmail.com" && (
                 <Link to={"/createItem"}>
                   <p className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-textColor text-base">

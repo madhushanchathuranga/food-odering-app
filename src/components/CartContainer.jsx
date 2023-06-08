@@ -7,13 +7,13 @@ import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
 import EmptyCart from "../img/emptyCart.svg";
 import CartItem from "./CartItem";
-import { db } from "../firebase.config";
-import { doc, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const CartContainer = () => {
   const [{ cartShow, cartItems, user }, dispatch] = useStateValue();
   const [flag, setFlag] = useState(1);
   const [tot, setTot] = useState(0);
+  const GoTo = useNavigate()
 
   const showCart = () => {
     dispatch({
@@ -39,26 +39,7 @@ const CartContainer = () => {
   };
 
   let checkout = () => {
-    let user = JSON.parse(localStorage.getItem('user'))
-    let all = JSON.parse(localStorage.getItem('cartItems'))
-    let order = []
-    let tot = 40
-
-    all.forEach((element, id) => {
-      order.push({
-        'name': element.title,
-        'qty': element.qty
-      });
-      tot += element.qty * element.price
-    });
-
-    setDoc(doc(db, "Order", user.uid), {
-      "name": user.displayName,
-      "email": user.email,
-      "order": order,
-      'totel': tot
-    })
-    alert("Your Order is completed.")
+    GoTo('/checkout')
   }
 
   return (

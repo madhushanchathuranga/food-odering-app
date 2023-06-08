@@ -1,0 +1,95 @@
+#mh {
+  color: purple;
+  margin-top: 5%;
+  font-size: xx-large;
+}
+
+#code {
+  width: 100vw;
+}
+
+#code #order {
+  background-color: rgba(70, 154, 184, 0.126);
+  margin-top: 35px;
+  font-size: large;
+  padding: 1%;
+  border-radius: 20px;
+  width: 70%;
+  transition: all 0.2s;
+}
+
+#code #order H3 {
+  color: darkslateblue;
+  font-weight: bolder;
+  font-size: 16px;
+  margin-top: 35px;
+}
+
+#code #order table {
+  margin: 20px;
+  border: 1px solid rgb(46, 44, 44);
+  text-align: center;
+}
+
+#code #order table caption {
+  color: darkcyan;
+  font-size: medium;
+}
+
+#code #order table th {
+  color: red;
+  padding: 10px;
+}
+
+#code #order table td {
+  color: orangered;
+  padding: 5px;
+}
+
+#code #order:hover {
+  background-color: rgba(84, 83, 62, 0.178);
+  cursor: pointer;
+  box-shadow: 0 0 10px black;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.loader-inner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #ccc;
+  border-top-color: #ff5722;
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+iframe {
+  margin: 0 0;
+  width: 100%;
+  height: 100%;
+}
+
+#map #mp{
+    height: 350pt;
+    width: 100%;
+}
+
+#map H1{
+    margin: 5%;
+    font-size: x-large;
+    color: purple;
+}

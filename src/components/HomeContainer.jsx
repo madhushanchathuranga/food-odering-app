@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Delivery from "../img/delivery.png";
 import HeroBg from "../img/heroBg.png";
 import { heroData } from "../utils/data";
+import { useNavigate } from "react-router-dom";
 
 const HomeContainer = () => {
+  const go = useNavigate()
+
+  let menu = () => {
+    go('/menu')
+  }
+
+  let map = () => {
+    go('status')
+  }
+
+  let scroll = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
+
+  useEffect(() => {
+    scroll()
+  }, [])
+
   return (
     <section
       className="grid grid-cols-1 md:grid-cols-2 gap-2 w-full "
@@ -11,7 +33,7 @@ const HomeContainer = () => {
     >
       <div className="py-2 flex-1 flex flex-col items-start justify-center gap-6">
         <div className="flex items-center gap-2 justify-center bg-orange-100 px-4 py-1 rounded-full">
-          <p className="text-base text-orange-500 font-semibold">
+          <p id='deldel' onClick={() => map()} className="text-base text-orange-500 font-semibold">
             Bike Delivery
           </p>
           <div className="w-8 h-8 bg-white rounded-full overflow-hidden drop-shadow-xl">
@@ -31,10 +53,10 @@ const HomeContainer = () => {
         </p>
 
         <p className="text-base text-textColor text-center md:text-left md:w-[80%]">
-           Nilwala Breeze Hotel is deliver foods near pitabeddara city.
+          Nilwala Breeze Hotel is deliver foods near pitabeddara city.
         </p>
 
-        <button
+        <button id="deldel" onClick={() => menu()}
           type="button"
           className="bg-gradient-to-br from-orange-400 to-orange-500 w-full md:w-auto px-4 py-2  rounded-lg hover:shadow-lg transition-all ease-in-out duration-100"
         >
