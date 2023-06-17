@@ -38,7 +38,7 @@ const Orders = () => {
         <div id="order">
             <h3> >>> Name : ${all.name} <<< </h3>
             <h3> >>> Email : ${all.email} <<< </h3>
-            <h3> >>> Number : ${all.num} <<< </h3>
+            <h3> >>> Number : ${all.phoneNumber} <<< </h3>
             <h3> >>> Address : ${all.address} <<< </h3>
 
             <center><table>
@@ -48,7 +48,7 @@ const Orders = () => {
               </tr>
                 ${row}
             </table></center>
-            <h3> >>> Totel : ${all.totel} rupees <<< </h3>
+            <h3> >>> Totel : ${all.total} rupees <<< </h3>
         </div>
         `
       })
