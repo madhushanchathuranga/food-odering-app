@@ -1,4 +1,10 @@
-
+I learned,
+- Advanced React Best Practices, such as folder & file structure, hooks, and refs
+- Creating a User Interface using Tailwind css
+- Working with Google Firebase
+- Framer motion animations without affecting loading speed
+- Responsive Material UI designs
+  
 Home page
 ![home](https://github.com/madhushanchathuranga/food-odering-app/assets/79782422/906c4edb-7352-4977-876a-c92dcbc4e6fd)
 Menu area
